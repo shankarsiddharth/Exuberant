@@ -8,9 +8,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/PostPartum.unity
     guid: 682d9971c77265547942951d159c1e5b
-  - enabled: 1
+  - enabled: 0
     path: Assets/Models/Quantum Theory/Polyworld/Interiors A/Scenes/PWI_Home-A.unity
     guid: b975d1a95b772d94cb380ce8ce9c1f6c
+  - enabled: 1
+    path: Assets/Models/Quantum Theory/Polyworld/Interiors A/Scenes/PostPartumHomeScene.unity
+    guid: 29155bb32d26c774fa5e4a048bcd26f2
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 1c3071686ab59e74c9356714a52d8f64, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 6bd63df32caa13544bf199990f9d8f46, type: 2}
