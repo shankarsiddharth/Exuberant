@@ -10,5 +10,6 @@ public enum ECollectibles {
     Pacifier,
     HourGlass,
     Toy,
-    Book
+    Book,
+    Baby
 };

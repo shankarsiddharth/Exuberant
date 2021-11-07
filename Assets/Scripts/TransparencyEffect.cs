@@ -21,21 +21,25 @@ public class TransparencyEffect : MonoBehaviour
     
     void Update()
     {
-        bool isCurrentlyGrabbed = GetComponent<OVRGrabbable>().isGrabbed;
-        if (isCurrentlyGrabbed)
+        OVRGrabbable grabbable = GetComponent<OVRGrabbable>();
+        if(grabbable != null)
         {
-            float axisValue = OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger);
-            if ( Math.Abs(axisValue - 1.0f) < 0.1f)
+            if (grabbable.isGrabbed)
             {
-                if (gameObject.activeSelf)
+                float axisValue = OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger);
+                if (Math.Abs(axisValue - 1.0f) < 0.1f)
                 {
-                    CanvasToShow.SetActive(false);
-                    OVRInput.SetControllerVibration(1, 1, OVRInput.Controller.RTouch);
-                    OVRInput.SetControllerVibration(1, 1, OVRInput.Controller.LTouch);
-                    gameObject.SetActive(false);
+                    if (gameObject.activeSelf)
+                    {
+                        CanvasToShow.SetActive(false);
+                        OVRInput.SetControllerVibration(1, 1, OVRInput.Controller.RTouch);
+                        OVRInput.SetControllerVibration(1, 1, OVRInput.Controller.LTouch);
+                        gameObject.SetActive(false);
+                    }
                 }
             }
         }
+        
     }
 
     private void PopulateCanvasToShow()
