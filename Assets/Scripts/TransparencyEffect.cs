@@ -11,35 +11,61 @@ public class TransparencyEffect : MonoBehaviour
     
     public ECollectibles CollectibleType;
     
-    
-    GameObject CanvasObject;
+    public GameObject Player;
+    public GameObject CanvasObject;
     
     void Start()
     {
+        if (Player == null)
+        {
+            Player = GameObject.FindWithTag("MainCamera");
+        }
+        
         PopulateCanvasToShow();
     }
     
     void Update()
     {
-        OVRGrabbable grabbable = GetComponent<OVRGrabbable>();
-        if(grabbable != null)
+        float axisValueR = OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger);
+        float axisValueL = OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger);
+        
+        if (CollectibleType == ECollectibles.Cradle)
         {
-            if (grabbable.isGrabbed)
+            if (isBabyLaughing)
             {
-                float axisValue = OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger);
-                if (Math.Abs(axisValue - 1.0f) < 0.1f)
+                if ((axisValueR > 0.75f) || (axisValueL > 0.75f))
                 {
-                    if (gameObject.activeSelf)
+                    CanvasToShow.SetActive(true);
+                    if (GetComponent<Outline>() != null)
                     {
-                        CanvasToShow.SetActive(false);
-                        OVRInput.SetControllerVibration(1, 1, OVRInput.Controller.RTouch);
-                        OVRInput.SetControllerVibration(1, 1, OVRInput.Controller.LTouch);
-                        gameObject.SetActive(false);
+                        GetComponent<Outline>().enabled = false;   
+                    }
+                    OVRInput.SetControllerVibration(1, 1, OVRInput.Controller.RTouch);
+                    OVRInput.SetControllerVibration(1, 1, OVRInput.Controller.LTouch);
+                }
+            }
+        }
+        else
+        {
+            OVRGrabbable grabbable = GetComponent<OVRGrabbable>();
+            if(grabbable != null)
+            {
+                if (grabbable.isGrabbed)
+                {
+                    if ((axisValueR > 0.75f) || (axisValueL > 0.75f)) 
+                    {
+                        if (gameObject.activeSelf)
+                        {
+                            CanvasToShow.SetActive(false);
+                            CountCollectibles.CollectiblesCount++;
+                            //OVRInput.SetControllerVibration(1, 1, OVRInput.Controller.RTouch);
+                            //OVRInput.SetControllerVibration(1, 1, OVRInput.Controller.LTouch);
+                            gameObject.SetActive(false);
+                        }
                     }
                 }
             }
         }
-        
     }
 
     private void PopulateCanvasToShow()
@@ -78,7 +104,10 @@ public class TransparencyEffect : MonoBehaviour
             {
                 if (!CanvasToShow.activeSelf)
                 {
-                    CanvasToShow.SetActive(true);
+                    if (CollectibleType != ECollectibles.Cradle)
+                    {
+                        CanvasToShow.SetActive(true);    
+                    }
                 }
             }
             float dis = (transform.position - other.transform.position).magnitude;
