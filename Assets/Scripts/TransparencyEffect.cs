@@ -4,13 +4,28 @@ using UnityEngine;
 
 public class TransparencyEffect : MonoBehaviour
 {
-
+    public AudioSource babyAudio;
+    private bool isBabyLaughing = false;
     private void OnTriggerStay(Collider other)
     {
 
         if (other.tag == "MainCamera")
         {
             float dis = (transform.position - other.transform.position).magnitude;
+
+            if (this.gameObject.name.Contains("Cradle"))
+            {
+                if (!isBabyLaughing)
+                {
+                    if (dis < 2)
+                    {
+                        isBabyLaughing = true;
+                        babyAudio.clip = Resources.Load<AudioClip>("baby laughing");
+                        //babyAudio.Stop();
+                        babyAudio.Play();
+                    }
+                }
+            }
 
             if (transform.GetComponent<MeshRenderer>() != null)
             {
