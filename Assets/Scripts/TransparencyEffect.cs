@@ -1,16 +1,82 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Oculus.Platform.Samples.VrBoardGame;
 using UnityEngine;
 
 public class TransparencyEffect : MonoBehaviour
 {
+    
+    public GameObject CanvasToShow;
+    
+    public ECollectibles CollectibleType;
+    
+    
+    GameObject CanvasObject;
+    
+    void Start()
+    {
+        PopulateCanvasToShow();
+    }
+    
+    void Update()
+    {
+        bool isCurrentlyGrabbed = GetComponent<OVRGrabbable>().isGrabbed;
+        if (isCurrentlyGrabbed)
+        {
+            float axisValue = OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger);
+            if ( Math.Abs(axisValue - 1.0f) < 0.1f)
+            {
+                if (gameObject.activeSelf)
+                {
+                    CanvasToShow.SetActive(false);
+                    OVRInput.SetControllerVibration(1, 1, OVRInput.Controller.RTouch);
+                    OVRInput.SetControllerVibration(1, 1, OVRInput.Controller.LTouch);
+                    gameObject.SetActive(false);
+                }
+            }
+        }
+    }
+
+    private void PopulateCanvasToShow()
+    {
+        if (CanvasObject == null)
+        {
+            CanvasObject = GameObject.FindWithTag("Canvas");
+        }
+
+        if (CanvasObject != null)
+        {
+            foreach (Transform child in CanvasObject.transform)
+            {
+                PanelType pt = child.GetComponent<PanelType>();
+                if (pt != null)
+                {
+                    if (CollectibleType == pt.CollectibleType)
+                    {
+                        CanvasToShow = pt.gameObject;
+                    }
+                }
+            }
+        }
+    }
+
+
     public AudioSource babyAudio;
     private bool isBabyLaughing = false;
+
     private void OnTriggerStay(Collider other)
     {
 
-        if (other.tag == "MainCamera")
+        if (other.CompareTag("MainCamera"))
         {
+            if (CanvasToShow != null)
+            {
+                if (!CanvasToShow.activeSelf)
+                {
+                    CanvasToShow.SetActive(true);
+                }
+            }
             float dis = (transform.position - other.transform.position).magnitude;
 
             if (this.gameObject.name.Contains("Cradle"))
@@ -33,7 +99,6 @@ public class TransparencyEffect : MonoBehaviour
 
                 if (meshRenderer != null)
                 {
-
                     foreach (Material m in meshRenderer.materials)
                     {
                         Color co = m.color;
