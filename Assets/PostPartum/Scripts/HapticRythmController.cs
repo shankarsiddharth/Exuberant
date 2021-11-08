@@ -15,7 +15,7 @@ public class HapticRythmController : MonoBehaviour
 
     public HapticState PreviousHapticState = HapticState.Idle;
     public HapticState CurrentHapticState = HapticState.Idle;
-    public int TotalHapticStateCount = 10;
+    public int TotalHapticStateCount = 4;
 
     private bool ShouldProcessHaptic = false;
     
@@ -24,13 +24,13 @@ public class HapticRythmController : MonoBehaviour
 
     private int HapticStateCount = 0;
     
-    private float ControllerTimeDelay = 0.5f;//0.1f
-    private float DualControllerTime = 1f;//0.25f
-    private float SingleControllerTime = 1f;//0.1f
+    private float ControllerTimeDelay = 0.25f;//0.1f
+    private float DualControllerTime = 0.25f;//0.25f
+    private float SingleControllerTime = 0.1f;//0.1f
 
     private float ControllerFrequency = 1.0f;
-    private float SingleControllerAmplitude = 1f;//0.1f;
-    private float DualControllerAmplitude = 1f;//0.2f;
+    private float SingleControllerAmplitude = 0.25f;//0.1f;
+    private float DualControllerAmplitude = 0.1f;//0.2f;
     
     public void PlayRythm()
     {

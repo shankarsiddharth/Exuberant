@@ -13,12 +13,18 @@ public class TransparencyEffect : MonoBehaviour
     
     public GameObject Player;
     public GameObject CanvasObject;
+    public PostPartumGameController GameController;
     
     void Start()
     {
         if (Player == null)
         {
             Player = GameObject.FindWithTag("MainCamera");
+        }
+
+        if(GameController == null)
+        {
+            GameController = GameObject.FindWithTag("GameController").GetComponent<PostPartumGameController>();
         }
         
         PopulateCanvasToShow();
@@ -38,7 +44,7 @@ public class TransparencyEffect : MonoBehaviour
                     CanvasToShow.SetActive(true);
                     if (GetComponent<Outline>() != null)
                     {
-                        GetComponent<Outline>().enabled = false;   
+                        GetComponent<Outline>().OutlineMode = Outline.Mode.OutlineHidden;   
                     }
                     OVRInput.SetControllerVibration(1, 1, OVRInput.Controller.RTouch);
                     OVRInput.SetControllerVibration(1, 1, OVRInput.Controller.LTouch);
@@ -58,9 +64,8 @@ public class TransparencyEffect : MonoBehaviour
                         {
                             CanvasToShow.SetActive(false);
                             CountCollectibles.CollectiblesCount++;
-                            //OVRInput.SetControllerVibration(1, 1, OVRInput.Controller.RTouch);
-                            //OVRInput.SetControllerVibration(1, 1, OVRInput.Controller.LTouch);
                             gameObject.SetActive(false);
+                            GameController.PlayRythm();                            
                         }
                     }
                 }

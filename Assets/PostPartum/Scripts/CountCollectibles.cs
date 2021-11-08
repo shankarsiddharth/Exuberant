@@ -7,7 +7,7 @@ public class CountCollectibles : MonoBehaviour
 {
     public UnityEvent OnCollectiblesCollectedEvent;
     
-    public int TotalCollectibles = 7;
+    public int TotalCollectibles = 8;
     
     public static int CollectiblesCount = 0;
 

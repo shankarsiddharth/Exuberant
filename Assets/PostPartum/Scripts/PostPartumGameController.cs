@@ -32,7 +32,12 @@ public class PostPartumGameController : MonoBehaviour
     {
         if (OVRInput.Get(OVRInput.Button.One))
         {
-            _hapticRythmController.PlayRythm();
+            //_hapticRythmController.PlayRythm();
         }
+    }
+
+    public void PlayRythm()
+    {
+        _hapticRythmController.PlayRythm();
     }
 }

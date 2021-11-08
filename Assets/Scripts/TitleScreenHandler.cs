@@ -6,13 +6,13 @@ using UnityEngine.SceneManagement;
 public class TitleScreenHandler : MonoBehaviour
 {
     public GameObject gameName;
-    public GameObject playButton, startButton;
+    public GameObject startButton;
     public GameObject introText, tutorialPanel;
     public GameObject grabbableObject, bench;
 
     private void Start()
     {
-        startButton.SetActive(false);
+        startButton.SetActive(true);
         tutorialPanel.SetActive(false);
         introText.SetActive(false);
         gameName.GetComponent<Animator>().enabled = false;
@@ -22,15 +22,16 @@ public class TitleScreenHandler : MonoBehaviour
     }
     public void PlayPressed()
     {
+        Debug.Log("play pressed....");
         introText.SetActive(true);
         gameName.GetComponent<Animator>().enabled = true;
         introText.GetComponent<Animator>().enabled = true;
-        playButton.SetActive(false);
-        startButton.SetActive(true);
+        startButton.SetActive(false);
     }
 
     public void StartPressed()
     {
+        Debug.Log("start pressed....");
         introText.SetActive(false);
         startButton.SetActive(false);    
         grabbableObject.SetActive(true);
@@ -38,12 +39,19 @@ public class TitleScreenHandler : MonoBehaviour
         tutorialPanel.SetActive(true);
     }
 
-    IEnumerator StartExperience()
+    private void Update()
     {
-        
+        if(OVRInput.Get(OVRInput.Button.One))
+        {       
+                PlayPressed();
+           
+        }
 
-        yield return new WaitForSeconds(5f);
+        if (OVRInput.Get(OVRInput.Button.Three))
+        {
+            StartPressed();
+        }
 
-        SceneManager.LoadScene(1);
+
     }
 }

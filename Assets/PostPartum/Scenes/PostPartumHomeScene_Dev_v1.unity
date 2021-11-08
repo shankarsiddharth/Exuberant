@@ -19882,6 +19882,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CanvasToShow: {fileID: 0}
   CollectibleType: 3
+  Player: {fileID: 0}
+  CanvasObject: {fileID: 0}
   babyAudio: {fileID: 262596305}
 --- !u!65 &779401921
 BoxCollider:
@@ -22041,6 +22043,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CanvasToShow: {fileID: 0}
   CollectibleType: 7
+  Player: {fileID: 0}
+  CanvasObject: {fileID: 0}
   babyAudio: {fileID: 0}
 --- !u!114 &850019931
 MonoBehaviour:
@@ -40860,6 +40864,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CanvasToShow: {fileID: 0}
   CollectibleType: 1
+  Player: {fileID: 0}
+  CanvasObject: {fileID: 0}
   babyAudio: {fileID: 0}
 --- !u!65 &1531397126
 BoxCollider:
@@ -42717,6 +42723,7 @@ GameObject:
   - component: {fileID: 1625128193}
   - component: {fileID: 1625128192}
   - component: {fileID: 1625128194}
+  - component: {fileID: 1625128195}
   m_Layer: 0
   m_Name: GameController
   m_TagString: GameController
@@ -42737,6 +42744,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanvasObject: {fileID: 0}
+  _hapticRythmController: {fileID: 0}
 --- !u!4 &1625128193
 Transform:
   m_ObjectHideFlags: 0
@@ -42769,6 +42777,21 @@ MonoBehaviour:
   TotalCollectibles: 7
   IsAllCollectiblesCollected: 0
   ChildRoomBarrier: {fileID: 0}
+--- !u!114 &1625128195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1625128191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be8c4ed56a068614aa50d9eb4f998d00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PreviousHapticState: 0
+  CurrentHapticState: 0
+  TotalHapticStateCount: 10
 --- !u!1001 &1627837348
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -47748,6 +47771,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CanvasToShow: {fileID: 0}
   CollectibleType: 5
+  Player: {fileID: 0}
+  CanvasObject: {fileID: 0}
   babyAudio: {fileID: 0}
 --- !u!1001 &1876525902
 PrefabInstance:
@@ -57703,6 +57728,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CanvasToShow: {fileID: 0}
   CollectibleType: 0
+  Player: {fileID: 0}
+  CanvasObject: {fileID: 0}
   babyAudio: {fileID: 0}
 --- !u!114 &2127194559
 MonoBehaviour:
@@ -58690,6 +58717,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CanvasToShow: {fileID: 0}
   CollectibleType: 8
+  Player: {fileID: 0}
+  CanvasObject: {fileID: 0}
   babyAudio: {fileID: 262596305}
 --- !u!1001 &5067525856628021608
 PrefabInstance:

@@ -12,5 +12,6 @@ public enum ECollectibles {
     Toy,
     Book,
     Baby,
-    TutorialObject
+    TutorialObject,
+    painting
 };
