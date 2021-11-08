@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Canvas
   - Collectibles
+  - ChildRoomBarrier
   layers:
   - Default
   - TransparentFX

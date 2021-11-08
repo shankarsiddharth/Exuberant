@@ -7,6 +7,7 @@ using UnityEngine.Serialization;
 public class PostPartumGameController : MonoBehaviour
 {
     public GameObject CanvasObject;
+    public HapticRythmController _hapticRythmController;
     
     // Start is called before the first frame update
     void Start()
@@ -19,11 +20,19 @@ public class PostPartumGameController : MonoBehaviour
         {
             CanvasObject.GetComponent<PostPartum.Scripts.CanvasController>().HideAllCanvasImages();
         }
+
+        if (_hapticRythmController == null)
+        {
+            _hapticRythmController = GetComponent<HapticRythmController>();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Test");
+        if (OVRInput.Get(OVRInput.Button.One))
+        {
+            _hapticRythmController.PlayRythm();
+        }
     }
 }
