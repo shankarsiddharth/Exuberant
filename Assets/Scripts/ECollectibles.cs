@@ -11,5 +11,6 @@ public enum ECollectibles {
     HourGlass,
     Toy,
     Book,
-    Baby
+    Baby,
+    TutorialObject
 };

@@ -7,13 +7,14 @@ public class TitleScreenHandler : MonoBehaviour
 {
     public GameObject gameName;
     public GameObject playButton, startButton;
-    public GameObject introText, readyText;
+    public GameObject introText, tutorialPanel;
     public GameObject grabbableObject, bench;
 
     private void Start()
     {
         startButton.SetActive(false);
-        readyText.SetActive(false);
+        tutorialPanel.SetActive(false);
+        introText.SetActive(false);
         gameName.GetComponent<Animator>().enabled = false;
         introText.GetComponent<Animator>().enabled = false;
         grabbableObject.SetActive(false);
@@ -21,6 +22,7 @@ public class TitleScreenHandler : MonoBehaviour
     }
     public void PlayPressed()
     {
+        introText.SetActive(true);
         gameName.GetComponent<Animator>().enabled = true;
         introText.GetComponent<Animator>().enabled = true;
         playButton.SetActive(false);
@@ -29,15 +31,16 @@ public class TitleScreenHandler : MonoBehaviour
 
     public void StartPressed()
     {
-        gameName.GetComponent<Animator>().enabled = false;
-        introText.GetComponent<Animator>().enabled = false;
+        introText.SetActive(false);
+        startButton.SetActive(false);    
         grabbableObject.SetActive(true);
         bench.SetActive(true);
+        tutorialPanel.SetActive(true);
     }
 
     IEnumerator StartExperience()
     {
-        readyText.SetActive(true);
+        
 
         yield return new WaitForSeconds(5f);
 
