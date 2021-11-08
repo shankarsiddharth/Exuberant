@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/TitleScreen.unity
+    guid: ab3e8730db22ca84885463c0e741ef94
+  - enabled: 1
     path: Assets/Models/Quantum Theory/Polyworld/Interiors A/Scenes/PostPartumHomeScene.unity
     guid: 29155bb32d26c774fa5e4a048bcd26f2
   m_configObjects:
